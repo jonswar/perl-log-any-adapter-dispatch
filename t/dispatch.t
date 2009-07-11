@@ -1,10 +1,10 @@
 #!perl
 use File::Temp qw(tempdir);
-use File::Slurp;
 use Log::Any;
-use Test::More tests => 1;
-use Log::Dispatch;
+use Log::Any::Util qw(read_file);
 use Log::Dispatch::File;
+use Log::Dispatch;
+use Test::More tests => 1;
 use strict;
 use warnings;
 
