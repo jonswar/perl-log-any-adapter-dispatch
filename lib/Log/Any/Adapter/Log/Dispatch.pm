@@ -1,5 +1,6 @@
 package Log::Any::Adapter::Log::Dispatch;
 use Carp qw(croak);
+use Log::Any::Util qw(make_method);
 use strict;
 use warnings;
 use base qw(Log::Any::Adapter::Base);
@@ -12,10 +13,19 @@ sub init {
     croak 'must supply dispatcher' unless defined( $self->{dispatcher} );
 }
 
-# Delegate methods to dispatcher
+# Delegate logging methods to same methods in dispatcher
 #
-foreach my $method ( Log::Any->logging_and_detection_methods() ) {
+foreach my $method ( Log::Any->logging_methods() ) {
     __PACKAGE__->delegate_method_to_slot( 'dispatcher', $method, $method );
+}
+
+# Delegate detection methods to would_log
+#
+foreach my $method ( Log::Any->detection_methods() ) {
+    my $level = substr( $method, 3 );
+    make_method( $method,
+        sub { my ($self) = @_; return $self->{dispatcher}->would_log($level) }
+    );
 }
 
 1;
