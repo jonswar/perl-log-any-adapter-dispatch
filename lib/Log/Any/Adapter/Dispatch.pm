@@ -1,4 +1,4 @@
-package Log::Any::Adapter::Log::Dispatch;
+package Log::Any::Adapter::Dispatch;
 use Carp qw(croak);
 use Log::Any::Util qw(make_method);
 use strict;
@@ -36,7 +36,7 @@ __END__
 
 =head1 NAME
 
-Log::Any::Adapter::Log::Dispatch
+Log::Any::Adapter::Dispatch
 
 =head1 SYNOPSIS
 
@@ -44,7 +44,7 @@ Log::Any::Adapter::Log::Dispatch
     my $dispatcher = Log::Dispatch->new();
     $dispatcher->add(Log::Dispatch::File->new(...));
     $dispatcher->add(Log::Dispatch::Screen->new(...));
-    Log::Any->set_adapter('Log::Dispatch', dispatcher => $dispatcher);
+    Log::Any->set_adapter('Dispatch', dispatcher => $dispatcher);
 
 =head1 DESCRIPTION
 

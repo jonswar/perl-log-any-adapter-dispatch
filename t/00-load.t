@@ -3,7 +3,7 @@
 use Test::More tests => 1;
 
 BEGIN {
-	use_ok( 'Log::Any::Adapter::Log::Dispatch' );
+	use_ok( 'Log::Any::Adapter::Dispatch' );
 }
 
-diag( "Testing Log::Any::Adapter::Log::Dispatch $Log::Any::Adapter::Log::Dispatch::VERSION, Perl $], $^X" );
+diag( "Testing Log::Any::Adapter::Dispatch $Log::Any::Adapter::Dispatch::VERSION, Perl $], $^X" );

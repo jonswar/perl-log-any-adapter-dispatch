@@ -1,8 +1,8 @@
 use inc::Module::Install;
 
-name 'Log-Any-Adapter-Log-Dispatch';
+name 'Log-Any-Adapter-Dispatch';
 abstract 'Adapter to use Log::Dispatch with Log::Any';
-all_from 'lib/Log/Any/Adapter/Log/Dispatch.pm';
+all_from 'lib/Log/Any/Adapter/Dispatch.pm';
 author 'Jonathan Swartz <swartz@pobox.com>';
 
 perl_version '5.006';
