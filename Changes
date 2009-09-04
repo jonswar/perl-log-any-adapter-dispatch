@@ -4,6 +4,8 @@ Revision history for Log-Any-Adapter-Dispatch
 
 0.04  Jul 17, 2009
 
+- Remove use of 'dp' from test
+
 0.03  Jul 17, 2009
 
 - Initial version
