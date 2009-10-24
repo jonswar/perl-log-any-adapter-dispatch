@@ -4,6 +4,8 @@ Revision history for Log-Any-Adapter-Dispatch
 
 0.05  Sep 4, 2009
 
+- Add dependency on Log::Any::Adapter
+
 0.04  Sep 4, 2009
 
 - Remove use of 'dp' from test
