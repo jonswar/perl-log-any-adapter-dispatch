@@ -41,10 +41,8 @@ Log::Any::Adapter::Dispatch
 =head1 SYNOPSIS
 
     use Log::Dispatch;
-    my $dispatcher = Log::Dispatch->new();
-    $dispatcher->add(Log::Dispatch::File->new(...));
-    $dispatcher->add(Log::Dispatch::Screen->new(...));
-    Log::Any->set_adapter('Dispatch', dispatcher => $dispatcher);
+    my $log = Log::Dispatch->new(outputs => [[ ... ]]);
+    Log::Any->set_adapter('Dispatch', dispatcher => $log);
 
 =head1 DESCRIPTION
 
