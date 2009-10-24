@@ -10,8 +10,8 @@ perl_version '5.006';
 build_requires 'File::Temp'  => '0.20';
 build_requires 'Test::More'  => 0;
 
-requires 'Log::Any' => '0.01';
-requires 'Log::Dispatch' => '2.20';
+requires 'Log::Any::Adapter' => 0;
+requires 'Log::Dispatch' => '2.26';
 
 license 'perl';
 
