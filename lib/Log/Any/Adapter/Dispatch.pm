@@ -1,6 +1,6 @@
 package Log::Any::Adapter::Dispatch;
-use Carp qw(croak);
 use Log::Any::Util qw(make_method);
+use Log::Dispatch;
 use strict;
 use warnings;
 use base qw(Log::Any::Adapter::Base);
@@ -8,9 +8,11 @@ use base qw(Log::Any::Adapter::Base);
 our $VERSION = '0.05';
 
 sub init {
-    my ($self) = @_;
+    my $self = shift;
 
-    croak 'must supply dispatcher' unless defined( $self->{dispatcher} );
+    # If a dispatcher was not explicitly passed in, create a new one with the passed arguments.
+    #
+    $self->{dispatcher} ||= Log::Dispatch->new(@_);
 }
 
 # Delegate logging methods to same methods in dispatcher
@@ -40,19 +42,26 @@ Log::Any::Adapter::Dispatch
 
 =head1 SYNOPSIS
 
-    use Log::Dispatch;
-    my $log = Log::Dispatch->new(outputs => [[ ... ]]);
-    Log::Any->set_adapter('Dispatch', dispatcher => $log);
+    use Log::Any::Adapter;
+
+    Log::Any::Adapter->set('Dispatch', outputs => [[ ... ]]);
+
+    my $dispatcher = Log::Dispatch->new( ... );
+    Log::Any::Adapter->set('Dispatch', dispatcher => $dispatcher);
 
 =head1 DESCRIPTION
 
-This Log::Any adapter uses L<Log::Dispatch|Log::Dispatch> for logging. There is
-a single required parameter, I<dispatcher>, which must be a valid Log::Dispatch
-object.
+This L<Log::Any|Log::Any> adapter uses L<Log::Dispatch|Log::Dispatch> for
+logging.
+
+You may either pass parameters (like I<outputs>) to be passed to
+C<Log::Dispatch-E<gt>new>, or pass a C<Log::Dispatch> object directly in the
+I<dispatcher> parameter.
 
 =head1 SEE ALSO
 
-L<Log::Any|Log::Any>, L<Log::Dispatch|Log::Dispatch>
+L<Log::Any::Adapter|Log::Any::Adapter>, L<Log::Any|Log::Any>,
+L<Log::Dispatch|Log::Dispatch>
 
 =head1 AUTHOR
 
