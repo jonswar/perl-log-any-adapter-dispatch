@@ -1,5 +1,5 @@
 package Log::Any::Adapter::Dispatch;
-use Log::Any::Util qw(make_method);
+use Log::Any::Adapter::Util qw(make_method);
 use Log::Dispatch;
 use strict;
 use warnings;
