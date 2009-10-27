@@ -2,10 +2,13 @@ Revision history for Log-Any-Adapter-Dispatch
 
 ** denotes an incompatible change
 
+0.06  Oct 27, 2009
+
 0.05  Oct 27, 2009
 
-- Can now create the Log::Dispatch object with given parameters
-- Add dependency on Log::Any::Adapter
+- Can now create the Log::Dispatch object automatically with given parameters
+- Update docs for new Log::Any::Adapter API
+- Add dependency on Log::Any::Adapter instead of Log::Any
 
 0.04  Sep 4, 2009
 
