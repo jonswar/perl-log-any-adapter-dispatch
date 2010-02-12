@@ -4,9 +4,16 @@ use Log::Any::Adapter;
 use Log::Any::Adapter::Util qw(read_file);
 use Log::Dispatch::File;
 use Log::Dispatch;
-use Test::More tests => 52;
+use Test::More;
 use strict;
 use warnings;
+
+my $test_count =
+  ( Log::Any->logging_methods +
+      Log::Any->logging_aliases +
+      Log::Any->detection_methods +
+      Log::Any->detection_aliases ) * 2;
+plan tests => $test_count;
 
 my $log = Log::Any->get_logger();
 
@@ -28,7 +35,7 @@ sub test_dispatch {
     my $contents = read_file($filename);
     foreach my $method ( Log::Any->logging_methods, Log::Any->logging_aliases )
     {
-        if ( $method !~ /debug|info/ ) {
+        if ( $method !~ /trace|debug|info/ ) {
             like( $contents, qr/logging with $method\n/, "found $method" );
         }
         else {
@@ -43,7 +50,7 @@ sub test_dispatch {
     foreach
       my $method ( Log::Any->detection_methods, Log::Any->detection_aliases )
     {
-        if ( $method !~ /debug|info/ ) {
+        if ( $method !~ /trace|debug|info/ ) {
             ok( $log->$method, "$method" );
         }
         else {
