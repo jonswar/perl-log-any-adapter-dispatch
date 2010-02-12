@@ -18,13 +18,17 @@ sub init {
 # Delegate logging methods to same methods in dispatcher
 #
 foreach my $method ( Log::Any->logging_methods() ) {
-    __PACKAGE__->delegate_method_to_slot( 'dispatcher', $method, $method );
+    my $log_dispatch_method = $method;
+    $log_dispatch_method =~ s/trace/debug/;
+    __PACKAGE__->delegate_method_to_slot( 'dispatcher', $method,
+        $log_dispatch_method );
 }
 
 # Delegate detection methods to would_log
 #
 foreach my $method ( Log::Any->detection_methods() ) {
     my $level = substr( $method, 3 );
+    $level =~ s/trace/debug/;
     make_method( $method,
         sub { my ($self) = @_; return $self->{dispatcher}->would_log($level) }
     );
