@@ -2,7 +2,7 @@ Revision history for Log-Any-Adapter-Dispatch
 
 ** denotes an incompatible change
 
-0.06  Oct 27, 2009
+0.06  Feb 12, 2010
 
 - Add trace->debug alias
 
