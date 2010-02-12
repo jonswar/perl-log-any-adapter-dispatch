@@ -4,6 +4,8 @@ Revision history for Log-Any-Adapter-Dispatch
 
 0.06  Oct 27, 2009
 
+- Add trace->debug alias
+
 0.05  Oct 27, 2009
 
 - Can now create the Log::Dispatch object automatically with given parameters
